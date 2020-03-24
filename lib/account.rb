@@ -13,4 +13,12 @@ class Account
     
     @balance += amount
   end
+
+  def withdraw(amount)
+    raise "Cannot withdraw negative amount" if amount.negative?
+
+    raise "Cannot withdraw more than in account" if (@balance - amount).negative?
+
+    @balance -= amount
+  end
 end
