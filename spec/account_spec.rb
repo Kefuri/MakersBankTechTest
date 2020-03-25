@@ -44,7 +44,7 @@ describe Account do
       expect{ account.withdraw(11) }.to raise_error("Cannot withdraw more than in account")
     end
 
-    it 'shoul dnot allow withdrawals that are negative amounts' do
+    it 'should not allow withdrawals that are negative amounts' do
       account = Account.new
       expect{ account.withdraw(-10) }.to raise_error("Cannot withdraw negative amount")
     end
