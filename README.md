@@ -66,17 +66,61 @@ Input:
 
 * Given amounts to be deposited and withdrawn from the account.
 
+* Request a summary of your account's transactions
+
 
 Output:
 
 * Transaction Data, including the date, transaction type, and remaining balance.
 * A printed statement, showcasing all the processed transactions for the account, shown in reverse chromological order.
 
+With this in mind, I thought out the class layouts for the functionality I would need.
+| Account             |
+|---------------------|
+| @balance            |
+| @transaction_history|
+|---------------------|
+| #get_balance                |
+| #get_transaction_history    |
+| #deposit                    |
+| #withdraw                   |
+| #add_to_transaction_history |
+
+| Transaction         |
+|---------------------|
+| @type               |
+| @amount             |
+| @date                |
+|---------------------|
+| #get_amount         |
+| #get_balance        |
+| #get_date           |
+
+| TransactionHistory   |
+|---------------------|
+| @transaction_log            |
+| @balance            |
+|---------------------|
+| #get_transaction_log |
+| #add_to_log    |
+| transaction_to_log |
+
+|Statement|
+|---------|
+| #print_statement |
+
 ## <a name="Installation">Installation Instructions</a>
 
 * To install, clone the repository to your local machine. Navigate to the folder it was cloned in and run `bundle install` to install RSpec (testing suite), Rubocop(Linter) and SimpleCov (test coverage).
 
 * Then, in your terminal run `irb -r './lib/account.rb`
+ - To set up an account run `<account_name> = Account.new`
+ - To deposit or withdraw, run `<account_name>.deposit(amount)` / `<account_name>.withdraw(amount)`
+ - To see your statement, run `Statement.print_statement(<account_name>.transaction_history)`
+
+* To run tests, run `rspec` in your cloned folder. This will also show test coverage.
+ 
+* To run a linter check, run `rubocop` in your cloned folder.
 ## <a name="Unit_Testng">Unit Testing</a>
 
 ## <a name="Methods">Classes & Methods</a>
