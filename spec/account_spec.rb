@@ -68,12 +68,18 @@ describe Account do
     it "should create a new instance of a transaction on deposit" do
       account = Account.new
       expect(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      allow(transaction).to receive(:get_type).and_return("Deposit")
+      allow(transaction).to receive(:get_amount).and_return(100)
+      allow(transaction).to receive(:get_date).and_return("10/10/1010")
       account.deposit(100)
     end
 
     it "should create a new instance of a transaction on withdrawal" do
       account = Account.new(150, transaction_history)
       expect(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      allow(transaction).to receive(:get_type).and_return("Deposit")
+      allow(transaction).to receive(:get_amount).and_return(100)
+      allow(transaction).to receive(:get_date).and_return("10/10/1010")
       expect(transaction_history).to receive(:add_to_log).with(transaction)
       account.withdraw(100)
     end

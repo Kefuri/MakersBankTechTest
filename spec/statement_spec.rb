@@ -12,10 +12,7 @@ describe Statement do
     end
 
     it "should print a statement with one deposit transaction of 1000" do
-      expect(transaction_history).to receive(:get_transaction_log).and_return([transaction])
-      expect(transaction).to receive(:get_amount).and_return(1000)
-      expect(transaction).to receive(:get_date).and_return("14/01/2012")
-      expect(account).to receive(:get_balance).and_return("1000")
+      expect(transaction_history).to receive(:get_transaction_log).and_return(["14/01/2012 || 1000.00 || || 1000.00"])
       expect{ Statement.print_statement(transaction_history.get_transaction_log, account) }.to output("date || credit || debit || balance\n14/01/2012 || 1000.00 || || 1000.00\n").to_stdout
     end
   end
