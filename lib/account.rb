@@ -1,5 +1,6 @@
 require_relative 'transaction'
 require_relative 'transaction_history'
+require_relative 'statement'
 class Account
 
   def initialize(balance = 0, history = TransactionHistory.new)
