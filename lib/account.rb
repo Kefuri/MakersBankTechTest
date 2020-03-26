@@ -1,3 +1,5 @@
+require_relative 'transaction'
+require_relative 'transaction_history'
 class Account
 
   def initialize(balance = 0, history = TransactionHistory.new)
@@ -28,7 +30,7 @@ class Account
   def get_transaction_history
     return @transaction_history
   end
-  
+
   private 
 
   def add_to_transaction_history(transaction)

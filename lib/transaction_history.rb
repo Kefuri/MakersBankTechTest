@@ -3,7 +3,7 @@ class TransactionHistory
     @transaction_log = []
   end
 
-  def log
+  def get_transaction_log
     return @transaction_log
   end
   
