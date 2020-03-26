@@ -5,6 +5,14 @@ describe Account do
   let(:transaction) { double :transaction }
   let(:transaction_history) { double :transaction}
 
+  context "#initialize" do
+    it "should make an instance of transaction history when initialized" do 
+      allow(TransactionHistory).to receive(:new).and_return(transaction_history)
+      account = Account.new
+      expect(account.get_transaction_history).to eq(transaction_history)
+    end
+  end
+
   context '#get_balance' do
     it 'should return the default balance of 0 when asked' do
       account = Account.new

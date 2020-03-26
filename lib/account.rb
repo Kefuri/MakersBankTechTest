@@ -1,7 +1,8 @@
 class Account
 
-  def initialize(balance = 0)
+  def initialize(balance = 0, history = TransactionHistory.new)
     @balance = balance
+    @transaction_history = history
   end
 
   def get_balance
@@ -22,5 +23,9 @@ class Account
 
     @balance -= amount
     Transaction.new("Withdrawal", amount)
+  end
+
+  def get_transaction_history
+    return @transaction_history
   end
 end
