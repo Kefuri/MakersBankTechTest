@@ -63,17 +63,20 @@ describe Account do
       expect{ account.withdraw(-10) }.to raise_error("Cannot withdraw negative amount")
     end
   end
+
   context 'logging transactions' do
     it "should create a new instance of a transaction on deposit" do
       account = Account.new
-      allow(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
-      expect(account.deposit(100)).to eq transaction
+      expect(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      account.deposit(100)
     end
 
     it "should create a new instance of a transaction on withdrawal" do
-      account = Account.new(150)
-      allow(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
-      expect(account.withdraw(100)).to eq transaction
+      account = Account.new(150, transaction_history)
+      expect(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      expect(transaction_history).to receive(:add_to_log).with(transaction)
+      account.withdraw(100)
     end
   end
+
 end

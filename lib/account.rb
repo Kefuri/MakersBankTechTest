@@ -13,7 +13,7 @@ class Account
     raise "Cannot deposit negative amounts" if amount.negative?
     
     @balance += amount
-    Transaction.new("Deposit", amount)
+    add_to_transaction_history(Transaction.new("Deposit", amount))
   end
 
   def withdraw(amount)
@@ -22,10 +22,16 @@ class Account
     raise "Cannot withdraw more than in account" if (@balance - amount).negative?
 
     @balance -= amount
-    Transaction.new("Withdrawal", amount)
+    add_to_transaction_history(Transaction.new("Withdrawal", amount))
   end
 
   def get_transaction_history
     return @transaction_history
+  end
+  
+  private 
+
+  def add_to_transaction_history(transaction)
+    @transaction_history.add_to_log(transaction)
   end
 end
