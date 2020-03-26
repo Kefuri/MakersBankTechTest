@@ -4,7 +4,7 @@ class TransactionHistory
     @balance = 0
   end
 
-  def get_transaction_log
+  def transaction_log
     return @transaction_log
   end
   
@@ -15,12 +15,12 @@ class TransactionHistory
   private
 
   def transaction_to_log(transaction)
-    if transaction.get_type == "Deposit"
-      @balance += transaction.get_amount
-      log = "#{transaction.get_date} || #{transaction.get_amount.to_s + ".00"} || || #{@balance.to_s + ".00"}"
+    if transaction.type == "Deposit"
+      @balance += transaction.amount
+      return "#{transaction.date} || #{transaction.amount.to_s + ".00"} || || #{@balance.to_s + ".00"}"
     else
-      @balance -= transaction.get_amount
-      log = "#{transaction.get_date} ||  || #{transaction.get_amount.to_s + ".00"} || #{@balance.to_s + ".00"}"
+      @balance -= transaction.amount
+      return "#{transaction.date} ||  || #{transaction.amount.to_s + ".00"} || #{@balance.to_s + ".00"}"
     end
   end
 end

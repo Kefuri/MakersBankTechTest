@@ -5,15 +5,15 @@ class Transaction
     @date = Time.new
   end
 
-  def get_type
+  def type
     return @transaction_type
   end
 
-  def get_amount
+  def amount
     return @amount
   end
   
-  def get_date
+  def date
     return @date.strftime("%d/%m/%Y")
   end
 end

@@ -7,7 +7,7 @@ class Account
     @transaction_history = history
   end
 
-  def get_balance
+  def balance
     return @balance
   end
   
@@ -27,7 +27,7 @@ class Account
     add_to_transaction_history(Transaction.new("Withdrawal", amount))
   end
 
-  def get_transaction_history
+  def transaction_history
     return @transaction_history
   end
 

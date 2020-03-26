@@ -2,22 +2,22 @@ require 'transaction'
 
 describe Transaction do
 
-  context "#get_type" do
+  context "#type" do
     it "should return deposit as the transaction type" do
       deposit = Transaction.new("Deposit", 100)
-      expect(deposit.get_type).to eq("Deposit")
+      expect(deposit.type).to eq("Deposit")
     end
 
     it "should return withdraw as the transaction type" do
       withdraw = Transaction.new("Withdrawal", 100)
-      expect(withdraw.get_type).to eq("Withdrawal")
+      expect(withdraw.type).to eq("Withdrawal")
     end
   end
   
-  context "#get_amount" do
+  context "#amount" do
     it "should return the deposit amount when initialized" do
       deposit = Transaction.new("Deposit", 300)
-      expect(deposit.get_amount).to eq(300)
+      expect(deposit.amount).to eq(300)
     end
   end
 
@@ -26,11 +26,11 @@ describe Transaction do
     allow(Time).to receive(:new).and_return(@fake_time)
   end
 
-  context "#get_date" do
+  context "#date" do
     it "Should return the date that the account was made on" do
       expect(Time).to receive(:new)
       deposit = Transaction.new("Deposit", 300)
-      expect(deposit.get_date).to eq(Time.new.strftime("%d/%m/%Y"))
+      expect(deposit.date).to eq(Time.new.strftime("%d/%m/%Y"))
     end
   end
 end
