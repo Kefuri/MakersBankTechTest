@@ -12,6 +12,7 @@ class Account
     raise "Cannot deposit negative amounts" if amount.negative?
     
     @balance += amount
+    Transaction.new("Deposit", amount)
   end
 
   def withdraw(amount)
@@ -20,5 +21,6 @@ class Account
     raise "Cannot withdraw more than in account" if (@balance - amount).negative?
 
     @balance -= amount
+    Transaction.new("Withdrawal", amount)
   end
 end

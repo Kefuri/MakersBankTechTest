@@ -1,6 +1,10 @@
 require 'account'
 
 describe Account do
+
+  let(:transaction) { double :transaction }
+  let(:transaction_history) { double :transaction}
+
   context '#get_balance' do
     it 'should return the default balance of 0 when asked' do
       account = Account.new
@@ -12,6 +16,7 @@ describe Account do
       expect(account.get_balance).to eq(100)
     end
   end
+
   context '#deposit' do
     it 'should add the deposited amount to the account balance' do
       account = Account.new
@@ -24,6 +29,7 @@ describe Account do
       expect{ account.deposit(-1000) }.to raise_error("Cannot deposit negative amounts")
     end
   end
+  
   context '#withdraw' do
     it 'should withdraw a given amount from the balance of the account' do
       account = Account.new(1000)
@@ -47,6 +53,19 @@ describe Account do
     it 'should not allow withdrawals that are negative amounts' do
       account = Account.new
       expect{ account.withdraw(-10) }.to raise_error("Cannot withdraw negative amount")
+    end
+  end
+  context 'logging transactions' do
+    it "should create a new instance of a transaction on deposit" do
+      account = Account.new
+      allow(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      expect(account.deposit(100)).to eq transaction
+    end
+
+    it "should create a new instance of a transaction on withdrawal" do
+      account = Account.new(150)
+      allow(Transaction).to receive(:new).with(any_args, instance_of(Integer)).and_return(transaction)
+      expect(account.withdraw(100)).to eq transaction
     end
   end
 end
