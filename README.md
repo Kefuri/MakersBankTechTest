@@ -7,7 +7,6 @@ Bank
 
 ## <a name="Outline">Test Outline</a>
 
-This is a practice tech test
 Today, you'll practice doing a tech test.
 
 For most tech tests, you'll essentially have unlimited time.  This practice session is about producing the best code you can when there is a minimal time pressure.
@@ -66,7 +65,7 @@ For this challenge, I felt the best way to approach my banking application was t
 Input:
 
 * Given amounts to be deposited and withdrawn from the account.
-* Given dates to specify when the transaction did or will take place.
+
 
 Output:
 
@@ -75,6 +74,9 @@ Output:
 
 ## <a name="Installation">Installation Instructions</a>
 
+* To install, clone the repository to your local machine. Navigate to the folder it was cloned in and run `bundle install` to install RSpec (testing suite), Rubocop(Linter) and SimpleCov (test coverage).
+
+* Then, in your terminal run `irb -r './lib/account.rb`
 ## <a name="Unit_Testng">Unit Testing</a>
 
 ## <a name="Methods">Classes & Methods</a>
