@@ -17,7 +17,7 @@ describe TransactionHistory do
       transaction_history.add_to_log(transaction)
       
       expect(transaction_history.transaction_log.length).to eq(1)
-      expect(transaction_history.transaction_log).to eq(["10/10/1010 || 100.00 || || 100.00"])
+      expect(transaction_history.transaction_log).to eq(["10/10/1010 || 100.00 ||  || 100.00"])
     end
   end
 end

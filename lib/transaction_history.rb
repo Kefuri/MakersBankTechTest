@@ -15,12 +15,15 @@ class TransactionHistory
   private
 
   def transaction_to_log(transaction)
+    debit = ""
+    credit = ""
     if transaction.type == "Deposit"
-      @balance += transaction.amount
-      return "#{transaction.date} || #{transaction.amount.to_s + ".00"} || || #{@balance.to_s + ".00"}"
+      @balance += transaction.amount     
+      credit = "#{transaction.amount}.00"
     else
       @balance -= transaction.amount
-      return "#{transaction.date} ||  || #{transaction.amount.to_s + ".00"} || #{@balance.to_s + ".00"}"
+      debit = "#{transaction.amount}.00"
     end
+    return "#{transaction.date} || #{credit} || #{debit} || #{@balance}.00"
   end
 end
